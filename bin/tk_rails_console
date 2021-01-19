@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+bundle exec tk_console "require 'tk_inspect_rails'; rails_console"
