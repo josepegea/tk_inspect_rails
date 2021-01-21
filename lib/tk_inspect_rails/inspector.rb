@@ -1,0 +1,2 @@
+require_relative 'inspector/ar_relation_inspector'
+require_relative 'inspector/ar_relation_inspector_component'
