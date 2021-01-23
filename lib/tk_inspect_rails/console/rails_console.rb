@@ -1,6 +1,23 @@
 module TkInspect
   module Console
     module RailsConsole
+      extend ActiveSupport::Concern
+
+      included do
+        self.main_console.create_sql_panel_menu
+      end
+
+      def create_sql_panel_menu
+        tools = @menu[:tools]
+        tools.add :separator
+        tools.add :command, label: "SQL Panel", accelerator: 'Command+l', command: -> { open_sql_panel }
+        @tk_root.tk_item.native_item.bind('Command-l', -> { open_sql_panel })
+      end
+
+      def open_sql_panel
+        TkInspectRails::SqlPanel::Base.new.refresh
+      end
+
       # Loads the Rails console into the current TkConsole
       # Inspired by https://github.com/cldwalker/ripl-rails/blob/master/lib/ripl/rails.rb
       def rails_console
