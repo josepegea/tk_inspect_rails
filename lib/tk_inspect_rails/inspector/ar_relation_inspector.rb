@@ -1,6 +1,6 @@
 module TkInspect
   module Inspector
-    class ArRelationInspector < Controller
+    class ArRelationInspector < Base
       register_shared_inspector self, ::ActiveRecord::Relation
 
       def create_main_component

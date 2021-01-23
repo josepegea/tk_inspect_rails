@@ -1,6 +1,6 @@
 module TkInspect
   module Console
-    class Controller
+    class Base
       include TkInspect::Console::RailsConsole
     end
   end
