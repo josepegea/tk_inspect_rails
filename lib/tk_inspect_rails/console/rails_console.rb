@@ -3,15 +3,15 @@ module TkInspect
     module RailsConsole
       extend ActiveSupport::Concern
 
-      included do
-        self.main_console.create_sql_panel_menu
-      end
-
       def create_sql_panel_menu
         tools = @menu[:tools]
         tools.add :separator
         tools.add :command, label: "SQL Panel", accelerator: 'Command+l', command: -> { open_sql_panel }
         @tk_root.tk_item.native_item.bind('Command-l', -> { open_sql_panel })
+      end
+
+      included do
+        self.main_console&.create_sql_panel_menu
       end
 
       def open_sql_panel
@@ -22,6 +22,7 @@ module TkInspect
       # Inspired by https://github.com/cldwalker/ripl-rails/blob/master/lib/ripl/rails.rb
       def rails_console
         say 'Loading Rails console...'
+        Tk.update
         require "#{Dir.pwd}/config/boot"
         if File.exists?("#{Dir.pwd}/config/application.rb")
           Object.const_set :APP_PATH, File.expand_path("#{Dir.pwd}/config/application")
