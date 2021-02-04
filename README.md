@@ -3,6 +3,8 @@
 Use [TkInspect](https://github.com/josepegea/tk_inspect) with Rails
 applications.
 
+![GIF demo](https://i.ibb.co/2hTPgQd/tk-inspect-rails-teaser.gif)
+
 At this time it provides:
 
 - A custom inspector for `ActiveRecord::Relation`
